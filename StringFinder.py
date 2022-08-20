@@ -15,7 +15,7 @@ def transformToArray(array):
     return newArray
 
 # Take input from the user + transform the string to an array
-arrayOfStrings = input("Please enter an array of strings: (seperate each word with a space) ")
+arrayOfStrings = input("Please enter an array of strings: (separate each word with a space) ")
 folderPath = input("Please enter a folder path: ")
 arrayOfStrings = transformToArray(arrayOfStrings)
 print(arrayOfStrings)
