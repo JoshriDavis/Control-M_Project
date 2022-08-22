@@ -54,7 +54,24 @@ print(finalList)
 print(sorted(finalList, key=itemgetter(2,2),reverse=True))
 finalList = sorted(finalList, key=itemgetter(2,2),reverse=True)
 
+# Make a new list from the final list, that includes "a href" html tags
+finalListWithLinks = finalList
+for x in range (len(finalList)):
+    print (finalList[x][0])
+    finalListWithLinks[x][0] = "<a href=\""+folderPath+"//"+finalList[x][0]+"\">"+finalList[x][0]+"</a>"
+    print (finalListWithLinks[x][0])
+
 # Create html report
-f = open(folderPath+"\\report.html", "w")
-f.write(tabulate(finalList, tablefmt='html',headers=["File Name","String", "Count"]))
+fileName = folderPath+"\\report.html"
+f = open(fileName, "w")
+f.write(tabulate(finalListWithLinks, tablefmt='html',headers=["File Name","String", "Count"]))
 f.close()
+
+# Create links from file names
+with open(fileName, 'r') as file :
+    filedata = file.read()
+filedata = filedata.replace('&lt;', '<')
+filedata = filedata.replace('&quot;', '"')
+filedata = filedata.replace('&gt;', '>')
+with open(fileName, 'w') as file:
+    file.write(filedata)
