@@ -6,9 +6,10 @@ from operator import itemgetter
 def transformToArray(array):
     y = 0
     newArray = [""]
+    addOne = lambda a: a + 1
     for x in array:
         if x == ' ':
-            y = y + 1
+            y = addOne(y)
             newArray.extend([""])
             continue
         newArray[y] = newArray[y] + x
@@ -30,10 +31,11 @@ for root,dirs,files in os.walk(folderPath): # get log file names
 
 # Making "filesPaths" contains the full address of each log file
 y = 0
+addOne = lambda a: a + 1
 for x in filesPaths:
     x = folderPath+"\\"+x
     filesPaths[y] = x
-    y = y+1
+    y = addOne(y)
 
 # Count the number of times the string appears in the logs
 finalList = [] # the final list with all the results
